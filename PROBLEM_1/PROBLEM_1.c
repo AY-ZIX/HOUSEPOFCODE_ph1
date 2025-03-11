@@ -8,7 +8,7 @@ int My_strlen(const char *str)
 	{
 		i++;
 	}
-	return i;
+	return i;//return the length of strings
 }
 
 /*

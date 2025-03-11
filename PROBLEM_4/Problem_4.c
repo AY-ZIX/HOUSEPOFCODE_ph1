@@ -15,21 +15,26 @@ bool check_match(const char *s ,char braket,int pos)
 	else if(braket == '[')
 		the_match =']';
 	else if(braket= '{')
-		the_match= '}';
-
+		the_match= '}';	//we chose the match braket we search for
 
        	while(s[pos] != '\0')
 		 {
 			 if(s[pos] == '[' ||s[pos] == '{'||s[pos] == '(')
 			{
+			//if there is another braket opened we need to 
+			//verfie its match first cuz order is importent
 				test = check_match(s,s[pos],pos+1);
 				if(test ==false)
 					return false;
+			//if test=false no need to continue return false
 			}
 		       	else if(s[pos] == the_match)
+			//if the match exict ret true
 				return true;
 			pos++;
 		 }
+	//we can know that test = false if this while is ended and nothing
+	//is returned
 	
 }
 bool isValid ( const char *s )
@@ -49,7 +54,7 @@ bool isValid ( const char *s )
 		i++;
 	}
 }
-
+/*
 int main(void)
 {
     const char *test1 = " () ";

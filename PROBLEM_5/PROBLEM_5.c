@@ -2,6 +2,9 @@
 #include<stdlib.h>
 #include<string.h>
 
+
+//this function will return the length of a the chars btw the delimiters
+//(words,etc..)
 int return_word_length(const char *string,int pos,char delimiter)
 {
 	int start=pos;
@@ -14,7 +17,7 @@ int return_word_length(const char *string,int pos,char delimiter)
 	return pos -start;
 }
 
-
+//this function will return the chars btw the delimiters
 char *return_the_word(const char *string,int pos,char delimiter)
 {
 	char *s=malloc(sizeof(char)*return_word_length(string,pos,delimiter)+1);
@@ -31,10 +34,12 @@ char *return_the_word(const char *string,int pos,char delimiter)
 	return s;
 }
 
+//this function is using delimiters and '\0' to count the number of word 
+//to help us after,to allocat the exact numb of lines
 int word_cont(const char *str, int delimiter)
 {
 	int i=0;
-	int word;
+	int word=0;
 	
 	while (str[i] != '\0')
 	{
@@ -58,30 +63,40 @@ char** split_str(const char* str, char delimiter)
 
 	word_len=return_word_length(str,i,delimiter);
 
-	answer=malloc(sizeof (char* ) * word_cont(str,delimiter));
+	answer=malloc(sizeof (char* ) * word_cont(str,delimiter)+1);
+	//add 1 for NULL
 	
 	while(str[i] != '\0')
 	{
 		if(str[i] == delimiter)
-			i++;
-		else
+			i++; //skip delimiters
+		else 
 		{
 			answer[j]=malloc(sizeof(char) * word_len);
+			//allocat for the word
 			strcpy(answer[j],return_the_word(str,i,delimiter));
+			//copy the word in the line[j]
 			j++;
-			i=word_len+i;
+			i=word_len+i;//skip to the end of the word+1
 		}
 		
 		word_len=return_word_length(str,i,delimiter);
+		//every time it will change the wordlen to allocat the
+		//exact length of the string(line)
 	}
 
 	answer[j]=NULL;
 	return answer;
 }
+// my idea is to cont every word and allocat the exact space using wordlen
+// and allocat the exact lines by usin word_cont function
+// and then cpy with a function only chars != delimiter
+
+
 /*
 int main(void)
 {
-    char *str = " /IAE/ /CLUB/CHALLANGE";
+    char *str = " / IAE / / CLUB /", delimiter = ' ';
     char **vector = split_str(str, '/');
     int i;
 

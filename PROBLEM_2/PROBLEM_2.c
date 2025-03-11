@@ -37,7 +37,7 @@ void reverse_string(char *str)
 //SO MY IDEA IS TO USE THe SWAP method TO CHANGE THE STR[i] WITH STR[len] TILL WE HAVE
 //LEN < i AND THAT WILL MEAN THAT THE BOTH RIGHT AND LEFT HALF OF THE STRINGS WERE SWAPED!
 
-
+/*
 int main ( void )
  {
  char test1 [] = "edoc fo esuoH oT emocleW" ;

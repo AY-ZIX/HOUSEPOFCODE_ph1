@@ -16,7 +16,7 @@ void reverse_string(char *str)
 {
         int i=0;
         int len;//the length of the string
-        char tmp;// we will use this variable to reverse the chars in the str
+        char tmp;//we will use this variable to reverse the chars in the str
                  
         len=My_strlen(str)-1;
 
@@ -30,8 +30,6 @@ void reverse_string(char *str)
         }
 
 }
-
-
 //so the idea behind the function reverse_by_ur_wills is to reserve only the caracters 
 //btw start and end(we will need it in the next function)
 void reverse_by_ur_will(char *str,int start,int end)
@@ -58,14 +56,16 @@ void reverse_words(char *str)
 
 	while(str[start] !='\0')
 	{
-		end++;
-		if(str[start] == ' ')
+		end++;//it will go till we reach the end of a word 
+		if(str[start] == ' ')//if it starts with space just skip
 			start++;
 
 		else if (str[end]== '\0' || str[end] ==' ')
-		{
+		{//so when the condition is true that means we reach the end
+		 //of a word or group of chars
 			reverse_by_ur_will(str,start,end-1);
-			start = end;
+			//it will revers only the word
+			start = end;//to the next chars
 		}
 	}
 }
@@ -76,17 +76,17 @@ int main ( void )
  char test2 [] = " code love I " ;
  char test3 [] = " G " ;
 
- printf ( " Before : % s \n " , test1 ) ;
+ printf ( " Before : % s \n" , test1 ) ;
  reverse_words ( test1 ) ;
- printf ( " After : % s \n \n " , test1 ) ;
+ printf ( " After : % s \n \n" , test1 ) ;
 
- printf ( " Before : % s \n " , test2 ) ;
+ printf ( " Before : % s \n" , test2 ) ;
  reverse_words ( test2 ) ;
- printf ( " After : % s \n \n " , test2 ) ;
+ printf ( " After : % s \n \n" , test2 ) ;
 
- printf ( " Before : % s \n " , test3 ) ;
+ printf ( " Before : % s \n" , test3 ) ;
  reverse_words ( test3 ) ;
- printf ( " After : % s \n \n " , test3 ) ;
+ printf ( " After : % s \n \n" , test3 ) ;
 
  return 0;
- }*/
+ }
